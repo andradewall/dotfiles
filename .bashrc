@@ -25,11 +25,10 @@ shopt -s checkwinsize
 # ###############################################
 alias ll="ls -lah --color=auto"
 alias vim="nvim"
-alias zshconfig="vim ~/.zshrc"
-alias zshrefresh="source ~/.zshrc"
-alias zshplugins="vim ~/.zsh_plugins.txt"
+alias eb="vim ~/.bashrc"
+alias rb="source ~/.bashrc"
 alias uu="echo '\nRUNNING APT UPDATE...'; sudo apt update; echo '\nRUNNING APT UPGRADE';  sudo apt upgrade; echo '\nRUNNING FLATPAK UPDATE'; flatpak update; sudo apt autoremove"
-alias editnvim="cd ~/.config/nvim/ && vim ."
+alias evim="cd ~/.config/nvim/ && vim ."
 
 alias changephp="sudo update-alternatives --config php"
 
@@ -55,6 +54,7 @@ alias ga="git add ."
 alias gcm="git commit -m"
 alias gacm="ga; gcm"
 alias gc="git checkout"
+alias gst="git status"
 
 alias sail="./vendor/bin/sail"
 alias sup="./vendor/bin/sail up"
@@ -72,3 +72,6 @@ export PATH="$PATH:/home/wallace/.config/composer/vendor/bin"
 export PATH="$PATH:/opt/nvim"
 
 eval "$(starship init bash)"
+eval "$(zoxide init bash)"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
