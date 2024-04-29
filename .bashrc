@@ -27,7 +27,7 @@ alias ll="ls -lah --color=auto"
 alias vim="nvim"
 alias eb="vim ~/.bashrc"
 alias rb="source ~/.bashrc"
-alias uu="echo '\nRUNNING APT UPDATE...'; sudo apt update; echo '\nRUNNING APT UPGRADE';  sudo apt upgrade; echo '\nRUNNING FLATPAK UPDATE'; flatpak update; sudo apt autoremove"
+alias uu="echo 'RUNNING APT UPDATE...'; sudo apt update; echo 'RUNNING APT UPGRADE';  sudo apt upgrade; echo 'RUNNING FLATPAK UPDATE'; flatpak update; sudo apt autoremove"
 alias evim="cd ~/.config/nvim/ && vim ."
 
 alias changephp="sudo update-alternatives --config php"
@@ -75,3 +75,4 @@ eval "$(starship init bash)"
 eval "$(zoxide init bash)"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
