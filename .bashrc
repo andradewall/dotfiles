@@ -29,6 +29,7 @@ alias eb="vim ~/.bashrc"
 alias rb="source ~/.bashrc"
 alias uu="echo 'RUNNING APT UPDATE...'; sudo apt update; echo 'RUNNING APT UPGRADE';  sudo apt upgrade; echo 'RUNNING FLATPAK UPDATE'; flatpak update; sudo apt autoremove"
 alias evim="cd ~/.config/nvim/ && vim ."
+alias sb="cd ~/second-brain/ && vim ."
 
 alias changephp="sudo update-alternatives --config php"
 
