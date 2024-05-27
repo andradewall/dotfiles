@@ -24,12 +24,12 @@ shopt -s checkwinsize
 # ALIASES
 # ###############################################
 alias ll="ls -lah --color=auto"
-alias vim="nvim"
-alias eb="vim ~/.bashrc"
+alias eb="nvim ~/.bashrc"
 alias rb="source ~/.bashrc"
 alias uu="echo 'RUNNING APT UPDATE...'; sudo apt update; echo 'RUNNING APT UPGRADE';  sudo apt upgrade; echo 'RUNNING FLATPAK UPDATE'; flatpak update; sudo apt autoremove"
-alias evim="cd ~/.config/nvim/ && vim ."
-alias sb="cd ~/second-brain/ && vim ."
+alias en="cd ~/.config/nvim/ && nvim ."
+alias sb="cd ~/second-brain/ && nvim ."
+alias lg="lazygit"
 
 alias changephp="sudo update-alternatives --config php"
 
@@ -71,9 +71,20 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$PATH:/home/wallace/.local/bin"
 export PATH="$PATH:/home/wallace/.config/composer/vendor/bin"
 export PATH="$PATH:/opt/nvim"
+export PATH="$PATH:/home/wallace/go/bin"
 
+# ###############################################
+# RUNNING APPS
+# ###############################################
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
+source /usr/share/doc/fzf/examples/key-bindings.bash
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+# [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# ###############################################
+# SETTING APPS 
+# ###############################################
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --ansi'
+export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git --color=always'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
