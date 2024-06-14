@@ -34,6 +34,8 @@ alias lg="lazygit"
 alias changephp="sudo update-alternatives --config php"
 
 alias sqlcli="mysql -u root -pdtdsv3010"
+alias sql57="docker exec -it mysql57 mysql -u root -pdtdsv3010"
+alias sql57i="docker exec -i mysql57 mysql -u root -pdtdsv3010"
 
 alias sh73="docker exec -it php-73 /bin/bash"
 alias sh81="docker exec -it php-81 /bin/bash"
@@ -88,3 +90,4 @@ source /usr/share/doc/fzf/examples/key-bindings.bash
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --ansi'
 export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git --color=always'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+eval "$(zellij setup --generate-auto-start bash)"
