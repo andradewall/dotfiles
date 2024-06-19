@@ -70,8 +70,8 @@ alias gst="git status"
 # NVM
 # ###############################################
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 # ###############################################
 # PATH EXPORT
@@ -82,7 +82,7 @@ export PATH="$PATH:/opt/nvim"
 export PATH="$PATH:/home/wallace/go/bin"
 
 # ###############################################
-# SETTING APPS 
+# SETTING APPS
 # ###############################################
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --ansi'
 export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git --color=always'
@@ -96,5 +96,4 @@ eval "$(zoxide init bash)"
 # source /usr/share/doc/fzf/examples/key-bindings.bash
 
 # eval "$(zellij setup --generate-auto-start bash)"
-
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
