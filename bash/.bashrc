@@ -43,6 +43,8 @@ alias sql57i="docker exec -i mysql57 mysql -u root -pdtdsv3010"
 alias sh73="docker exec -it php-73 /bin/bash"
 alias sh81="docker exec -it php-81 /bin/bash"
 alias dlsa="docker container ls --all"
+alias dcud="docker compose up -d"
+alias dcd="docker compose down"
 
 # PHP
 alias art="php artisan"
@@ -55,7 +57,7 @@ alias nrbaoc="nrb && aoc"
 alias changephp="sudo update-alternatives --config php"
 alias pint="./vendor/bin/pint"
 alias phpstan="./vendor/bin/phpstan"
-alias sail="./vendor/bin/sail"
+alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
 alias sup="./vendor/bin/sail up"
 alias sart="./vendor/bin/sail php artisan"
 
