@@ -68,6 +68,9 @@ alias gacm="ga; gcm"
 alias gc="git checkout"
 alias gst="git status"
 
+# Rust
+alias cargo="docker run --rm --user \"$(id -u)\":\"$(id -g)\" -v \"$PWD\":/usr/src/myapp -w /usr/src/myapp rust:bullseye cargo"
+
 # ###############################################
 # NVM
 # ###############################################
