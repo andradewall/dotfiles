@@ -28,7 +28,7 @@ shopt -s checkwinsize
 alias ll="eza -lAG --icons=auto"
 alias eb="nvim ~/.bashrc"
 alias rb="source ~/.bashrc"
-alias uu="echo 'RUNNING APT UPDATE...'; sudo apt update; echo 'RUNNING APT UPGRADE';  sudo apt upgrade; echo 'RUNNING FLATPAK UPDATE'; flatpak update; sudo apt autoremove"
+alias uu="echo -e \"\nRUNNING apt update...\n=====================\n\"; sudo apt update; echo -e \"\nRUNNING apt upgrade...\n======================\n\";  sudo apt upgrade; echo -e \"\nRUNNING flatpak update...\n=========================\n\"; flatpak update; echo -e \"\nRUNNING apt autoremove...\n=========================\n\"; sudo apt autoremove"
 alias en="cd ~/.config/nvim/ && nvim ."
 alias sb="cd ~/second-brain/ && nvim ."
 alias ed="cd ~/dotfiles/ && nvim ."
