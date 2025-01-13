@@ -45,6 +45,8 @@ alias sh81="docker exec -it php-81 /bin/bash"
 alias dlsa="docker container ls --all"
 alias dcud="docker compose up -d"
 alias dcd="docker compose down"
+alias de="docker exec"
+alias deit="docker exec -it"
 
 # PHP
 alias art="php artisan"
