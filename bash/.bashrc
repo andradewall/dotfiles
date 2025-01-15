@@ -71,8 +71,8 @@ alias gc="git checkout"
 alias gst="git status"
 
 # Rust
-alias cargo="docker run --rm --user \"$(id -u)\":\"$(id -g)\" -v \"$PWD\":/usr/src/myapp -w /usr/src/myapp rust:bullseye cargo"
-alias rc="docker run --rm --user \"$(id -u)\":\"$(id -g)\" -v \"$PWD\":/usr/src/myapp -w /usr/src/myapp rust:bullseye"
+# alias cargo="docker run --rm --user \"$(id -u)\":\"$(id -g)\" -v \"$PWD\":/usr/src/myapp -w /usr/src/myapp rust:bullseye cargo"
+# alias rc="docker run --rm --user \"$(id -u)\":\"$(id -g)\" -v \"$PWD\":/usr/src/myapp -w /usr/src/myapp rust:bullseye"
 
 # ###############################################
 # NVM
@@ -88,6 +88,7 @@ export PATH="$PATH:/home/wallace/.local/bin"
 export PATH="$PATH:/home/wallace/.config/composer/vendor/bin"
 export PATH="$PATH:/opt/nvim"
 export PATH="$PATH:/home/wallace/go/bin"
+export PATH="$PATH:$HOME/.cargo/bin"
 
 # ###############################################
 # SETTING APPS
@@ -106,3 +107,4 @@ eval "$(zoxide init bash)"
 
 # eval "$(zellij setup --generate-auto-start bash)"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+. "$HOME/.cargo/env"
