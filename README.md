@@ -3,6 +3,7 @@
 ## Requirements
 
 - [Stow](#stow)
+- [Tmux](#tmux)
 
 ### Stow
 
