@@ -1,0 +1,9 @@
+theme = catppuccin-mocha
+font-size = 16
+working-directory = home
+shell-integration = bash
+clipboard-read = allow
+clipboard-write = allow
+window-padding-x = 16
+window-padding-y = 16
+
