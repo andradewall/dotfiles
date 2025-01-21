@@ -4,6 +4,7 @@
 
 - [Stow](#stow)
 - [Tmux](#tmux)
+- [Starship](#starship)
 
 ### Stow
 
@@ -27,3 +28,12 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 See more info [here](https://github.com/tmux/tmux/wiki/Installing).
 
+### Starship
+
+You need Starship as your shell prompt
+
+```bash
+sudo zypper in starship # opensuse tumbleweed
+```
+
+See more info [here](https://starship.rs/guide/).
