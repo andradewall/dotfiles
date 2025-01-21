@@ -5,6 +5,7 @@
 - [Stow](#stow)
 - [Tmux](#tmux)
 - [Starship](#starship)
+- [Bash](#bash)
 
 ### Stow
 
@@ -37,3 +38,13 @@ sudo zypper in starship # opensuse tumbleweed
 ```
 
 See more info [here](https://starship.rs/guide/).
+
+### Bash
+
+Bash is your shell interpreter. To have the full experience, you'll need:
+
+- eza; [Installation](https://github.com/eza-community/eza/blob/main/INSTALL.md)
+- lazygit; [Installation](https://github.com/jesseduffield/lazygit?tab=readme-ov-file#installation)
+- fzf; [Installation](https://github.com/junegunn/fzf?tab=readme-ov-file#installation)
+- bat; [Installation](https://github.com/sharkdp/bat?tab=readme-ov-file#installation)
+- zoxide; [Installation](https://github.com/ajeetdsouza/zoxide?tab=readme-ov-file#installation)
