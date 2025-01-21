@@ -27,6 +27,7 @@ sudo zypper in tmux # opensuse tumbleweed
 # after installed, download TPM
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
+
 See more info [here](https://github.com/tmux/tmux/wiki/Installing).
 
 ## Starship
