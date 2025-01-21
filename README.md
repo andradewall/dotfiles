@@ -9,10 +9,8 @@
 
 You need GNU Stow to auto-deploy files to your environment.
 
-#### OpenSUSE Tumbleweed
-
 ```bash
-sudo zypper in stow
+sudo zypper in stow # opensuse tumbleweed
 ```  
 
 See more info [here](https://www.gnu.org/software/stow/manual/stow.html).
