@@ -1,13 +1,13 @@
 # Dotfiles
 
-## Requirements
+## Index
 
 - [Stow](#stow)
 - [Tmux](#tmux)
 - [Starship](#starship)
 - [Bash](#bash)
 
-### Stow
+## Stow
 
 You need GNU Stow to auto-deploy files to your environment.
 
@@ -17,7 +17,7 @@ sudo zypper in stow # opensuse tumbleweed
 
 See more info [here](https://www.gnu.org/software/stow/manual/stow.html).
 
-### Tmux
+## Tmux
 
 You need Tmux as a terminal multiplexer.
 
@@ -29,7 +29,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 See more info [here](https://github.com/tmux/tmux/wiki/Installing).
 
-### Starship
+## Starship
 
 You need Starship as your shell prompt
 
@@ -39,7 +39,7 @@ sudo zypper in starship # opensuse tumbleweed
 
 See more info [here](https://starship.rs/guide/).
 
-### Bash
+## Bash
 
 Bash is your shell interpreter. To have the full experience, you'll need:
 
