@@ -103,7 +103,7 @@ export BAT_THEME="Catppuccin Mocha"
 # ###############################################
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
-# source /usr/share/doc/fzf/examples/key-bindings.bash
+eval "$(fzf --bash)"
 
 # eval "$(zellij setup --generate-auto-start bash)"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
