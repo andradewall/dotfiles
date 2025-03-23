@@ -1,8 +1,7 @@
 {
     "position": "top",
-    "reload_style_on_change": true,
     "modules-left": [
-        "hyprland/window"
+        "tray"
     ],
     "modules-center": [
         "clock"
@@ -12,22 +11,18 @@
         "memory",
         "temperature",
         "backlight",
-        "tray",
-        "mpd",
         "idle_inhibitor",
         "pulseaudio",
         "bluetooth",
         "network",
-        "power-profiles-daemon",
-        "keyboard-state",
-        "sway/language",
         "battery",
         "custom/power",
         "hyprland/workspaces"
     ],
     "clock": {
         "format": "{:%Y-%m-%d %H:%M}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "on-click": "bash ~/.config/hypr/scripts/calendar.sh"
     },
     "battery": {
         "states": {
@@ -51,11 +46,12 @@
         "tooltip-format": "{time}"
     },
     "network": {
-        "format-wifi": "<span size='13000'> </span>",
-        "format-ethernet": "<span size='13000'>󰤭 </span>",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "<span size='13000'> </span>",
-        "tooltip-format-wifi": "Connected: {essid} - {signalStrength}%"
+        "format-wifi": " ", // 
+        "format-ethernet": " ", //   "󰤭 "
+        "format-linked": "", // 
+        "format-disconnected": " ",
+        "tooltip-format-wifi": "{essid} - {signalStrength}%",
+        "on-click": "bash ~/.config/hypr/scripts/wifi_menu.sh"
     },
     "bluetooth": {
         "format": "",
@@ -65,15 +61,23 @@
         "on-click": "bash ~/.config/hypr/scripts/bluetooth_menu.sh"
     },
     "pulseaudio": {
-        "format": "{icon}  {volume}%",
+        "format": "{icon}",
         "format-muted": "",
         "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
             "default": [
                 "",
                 "",
                 " "
             ]
         },
+        "tooltip": true,
+        "tooltip-format": "{icon} {volume}%",
         "on-click": "pavucontrol"
     },
     "idle_inhibitor": {
@@ -84,31 +88,35 @@
         }
     },
     "tray": {
-        // "icon-size": 21,
+        "icon-size": 18,
         "spacing": 10
     },
     "cpu": {
-        "format": " {usage}%",
-        "tooltip": false
+        "format": " ",
+        "tooltip-format": " {usage}%"
     },
     "memory": {
-        "format": " {}%"
+        "format": " ", // 
+        "interval": "60",
+        "tooltip-format": "{used:0.1f}GB/{total:0.1f}GB used ({percentage}%)"
     },
     "temperature": {
         // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{icon} {temperatureC}°C",
+        "format": "{icon}",
+        "tooltip-format": "{temperatureC}°C",
         "format-icons": [
-            "",
-            "",
-            ""
+            "", // ""
+            "", // ""
+            "" // ""
         ]
     },
     "backlight": {
         // "device": "acpi_video1",
-        "format": "{icon} {percent}%",
+        "format": "{icon}",
+        "tooltip-format": "{percent}%",
         "format-icons": [
             "",
             "",
