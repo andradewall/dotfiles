@@ -70,6 +70,7 @@ button:hover {
 #wireplumber,
 #tray,
 #network,
+#bluetooth,
 #mode,
 #scratchpad {
   margin-top: 2px;
@@ -91,12 +92,12 @@ button:hover {
 }
 
 #pulseaudio {
-    color: @blue;
+    color: @yellow;
     /* border-bottom: 2px solid @blue; */
 }
 
 #network {
-    color: @yellow;
+    color: @blue;
     /* border-bottom: 2px solid @yellow; */
 }
 
@@ -133,4 +134,12 @@ button:hover {
 
 #custom-power {
     color: @red;
+}
+
+#bluetooth {
+  padding: 0 10px;
+}
+
+#bluetooth.connected {
+  color: @blue; /* Green when connected */
 }
