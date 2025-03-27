@@ -7,13 +7,19 @@ if ! systemctl is-active NetworkManager >/dev/null; then
     sleep 1
 fi
 
+# Auto-connect to a known network if not connected
+if ! nmcli -t -f STATE con show --active | grep -q "activated"; then
+    known_network=$(nmcli -t -f NAME,TYPE con show | grep "wifi" | cut -d: -f1 | head -n1)
+    if [ -n "$known_network" ]; then
+        notify-send "Wi-Fi" "Auto-connecting to $known_network..." -t 2000
+        nmcli con up "$known_network" >/dev/null 2>&1
+    fi
+fi
+
 # Function to scan and list unique Wi-Fi networks
 get_networks() {
-    # Notify user that scanning is happening
     notify-send "Wi-Fi" "Scanning for networks..." -t 2000
-    # Force a rescan and list networks
     nmcli -f SSID,SIGNAL,SECURITY dev wifi list --rescan yes >/tmp/wifi_list
-    # Remove duplicates and format for rofi
     awk 'NR>1 && $1 != "" && !seen[$1]++ {print $1 " - " $2 "% - " $3}' /tmp/wifi_list
 }
 
@@ -26,7 +32,6 @@ if [ -n "$selected" ]; then
     current=$(nmcli -t -f NAME con show --active | head -n1)
 
     if [ "$current" = "$ssid" ]; then
-        # Disconnect if already connected
         notify-send "Wi-Fi" "Disconnecting from $ssid..." -t 2000
         if nmcli con down "$ssid" >/dev/null 2>&1; then
             notify-send "Wi-Fi" "$ssid disconnected" -t 3000
@@ -34,7 +39,6 @@ if [ -n "$selected" ]; then
             notify-send "Wi-Fi" "Failed to disconnect $ssid" -u critical -t 3000
         fi
     else
-        # Check if the network is saved
         if nmcli con show "$ssid" >/dev/null 2>&1; then
             notify-send "Wi-Fi" "Connecting to $ssid..." -t 2000
             if nmcli con up "$ssid" >/dev/null 2>&1; then
@@ -43,13 +47,13 @@ if [ -n "$selected" ]; then
                 notify-send "Wi-Fi" "Connection to $ssid failed" -u critical -t 3000
             fi
         else
-            # Prompt for password for new networks
-            security=$(echo "$selected" | awk '{print $5}') # SECURITY field
+            security=$(echo "$selected" | awk '{print $5}')
             if [[ "$security" =~ "WPA" || "$security" =~ "WEP" ]]; then
                 password=$(rofi -dmenu -p "Enter password for $ssid" -password -lines 0)
                 if [ -n "$password" ]; then
                     notify-send "Wi-Fi" "Connecting to $ssid..." -t 2000
                     if nmcli dev wifi connect "$ssid" password "$password" >/dev/null 2>&1; then
+                        nmcli con mod "$ssid" connection.autoconnect yes # Save for auto-connect
                         notify-send "Wi-Fi" "$ssid connected successfully" -t 3000
                     else
                         notify-send "Wi-Fi" "Connection to $ssid failed" -u critical -t 3000
@@ -58,9 +62,9 @@ if [ -n "$selected" ]; then
                     notify-send "Wi-Fi" "Password required for $ssid" -u critical -t 3000
                 fi
             else
-                # Open networks (no password)
                 notify-send "Wi-Fi" "Connecting to $ssid..." -t 2000
                 if nmcli dev wifi connect "$ssid" >/dev/null 2>&1; then
+                    nmcli con mod "$ssid" connection.autoconnect yes # Save for auto-connect
                     notify-send "Wi-Fi" "$ssid connected successfully" -t 3000
                 else
                     notify-send "Wi-Fi" "Connection to $ssid failed" -u critical -t 3000
@@ -70,5 +74,4 @@ if [ -n "$selected" ]; then
     fi
 fi
 
-# Clean up
 rm -f /tmp/wifi_list
