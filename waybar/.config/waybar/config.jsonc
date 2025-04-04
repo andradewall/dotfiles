@@ -15,6 +15,7 @@
         "pulseaudio",
         "bluetooth",
         "network",
+        "custom/vpn",
         "battery",
         "custom/power",
         "hyprland/workspaces"
@@ -29,13 +30,13 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "<span size='13000' foreground='#a6e3a1'>{icon} </span> {capacity}%",
-        "format-warning": "<span size='13000' foreground='#B1E3AD'>{icon} </span> {capacity}%",
-        "format-critical": "<span size='13000' foreground='#E38C8F'>{icon} </span> {capacity}%",
-        "format-charging": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
-        "format-plugged": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
-        "format-alt": "<span size='13000' foreground='#B1E3AD'>{icon} </span> {time}",
-        "format-full": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
+        "format": "{icon} {capacity}%",
+        "format-warning": "{icon} {capacity}%",
+        "format-critical": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-full": "  {capacity}%",
         "format-icons": [
             "",
             "",
@@ -140,6 +141,14 @@
             "hibernate": "systemctl hibernate",
             "reboot": "reboot",
             "shutdown": "shutdown now"
-        }
+        },
+        "class": "custom-power"
+    },
+    "custom/vpn": {
+        "format": "VPN ",
+        "exec": "echo '{\"class\": \"connected\"}'",
+        "exec-if": "test -d /proc/sys/net/ipv4/conf/tun0",
+        "return-type": "json",
+        "interval": 5
     }
 }

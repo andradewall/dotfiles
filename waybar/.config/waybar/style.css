@@ -59,6 +59,16 @@ button:hover {
     background-color: #eb4d4b;
 }
 
+label.module {
+      margin-top: 2px;
+  margin-bottom: 2px;
+  margin-left: 4px;
+  margin-right: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+
+}
+
 #pulseaudio,
 #clock,
 #battery,
@@ -72,13 +82,11 @@ button:hover {
 #network,
 #bluetooth,
 #mode,
+#idle_inhibitor,
+#power,
+.custom-power,
+.custom-vpn,
 #scratchpad {
-  margin-top: 2px;
-  margin-bottom: 2px;
-  margin-left: 4px;
-  margin-right: 4px;
-  padding-left: 4px;
-  padding-right: 4px;
 }
 
 #clock {
@@ -113,6 +121,16 @@ button:hover {
 #battery {
     color: @green;
     /* border-bottom: 2px solid @green; */
+}
+
+#battery.warning {
+    color: @yellow;
+    background: transparent;
+}
+
+#battery.critical {
+    color: red;
+    background: transparent;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
