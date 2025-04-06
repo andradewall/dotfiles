@@ -53,7 +53,8 @@
         "format-disconnected": " ",
         "format-disabled": "󰤭 ",
         "tooltip-format-wifi": "{essid} - {signalStrength}%",
-        "on-click": "bash ~/.config/hypr/scripts/wifi_menu.sh"
+        // "on-click": "bash ~/.config/hypr/scripts/wifi_menu.sh"
+        "on-click": "iwgtk"
     },
     "bluetooth": {
         "format": "",
