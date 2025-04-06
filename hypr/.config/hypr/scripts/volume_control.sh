@@ -45,5 +45,5 @@ IS_MUTED=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -o "MUTED")
 if [ "$IS_MUTED" == "MUTED" ]; then
     dunstify -a "Volume" "$ACTION Volume" "Muted" -t 2000
 else
-    dunstify -a "Volume" "$ACTION Volume" "Current level: $CURRENT_VOLUME%" -h int:value:"$CURRENT_VOLUME" -t 2000
+    notify-send -e -h int:value:"$CURRENT_VOLUME" -h string:x-canonical-private-synchronous:volume_notif -u low " Volume Level: $CURRENT_VOLUME%"
 fi
