@@ -1,12 +1,14 @@
 {
     "position": "top",
     "modules-left": [
-        "tray"
+        "hyprland/workspaces"
     ],
     "modules-center": [
-        "clock"
+        "clock",
+        "custom/notification"
     ],
     "modules-right": [
+        "tray",
         "cpu",
         "memory",
         "temperature",
@@ -17,8 +19,7 @@
         "network",
         "custom/vpn",
         "battery",
-        "custom/power",
-        "hyprland/workspaces"
+        "custom/power"
     ],
     "clock": {
         "format": "{:%Y-%m-%d %H:%M}",
@@ -151,5 +152,25 @@
         "exec-if": "test -d /proc/sys/net/ipv4/conf/tun0",
         "return-type": "json",
         "interval": 5
-    }
+    },
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{} {icon}",
+        "format-icons": {
+            "notification": "<span foreground='#f9e2af'></span>",
+            "none": "",
+            "dnd-notification": "<span foreground='#f9e2af'></span>",
+            "dnd-none": "",
+            "inhibited-notification": "<span foreground='#f9e2af'></span>",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "<span foreground='#f9e2af'></span>",
+            "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
 }
