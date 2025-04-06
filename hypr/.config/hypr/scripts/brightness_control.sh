@@ -1,19 +1,56 @@
 #!/bin/bash
+# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
+# Script for Monitor backlights (if supported) using brightnessctl
 
-# Check the argument: "up" or "down"
-if [ "$1" == "up" ]; then
-    brightnessctl s 10%+ >/dev/null 2>&1
-    ACTION="Increased"
-elif [ "$1" == "down" ]; then
-    brightnessctl s 10%- >/dev/null 2>&1
-    ACTION="Decreased"
-else
-    echo "Usage: $0 {up|down}"
-    exit 1
-fi
+step=10 # INCREASE/DECREASE BY THIS VALUE
 
-# Get the current brightness percentage
-CURRENT_BRIGHTNESS=$(brightnessctl | grep "Current brightness" | awk '{print $4}' | tr -d '()%')
+# Get brightness
+get_backlight() {
+    brightnessctl -m | cut -d, -f4 | sed 's/%//'
+}
 
-# Send notification via dunstify
-dunstify -a "Brightness" "$ACTION Brightness" "Current level: $CURRENT_BRIGHTNESS%" -h int:value:"$CURRENT_BRIGHTNESS" -t 2000
+# Notify
+notify_user() {
+    notify-send -e -h string:x-canonical-private-synchronous:brightness_notif -h int:value:$current -u low "Screen" "Brightness:$current%"
+}
+
+# Change brightness
+change_backlight() {
+    local current_brightness
+    current_brightness=$(get_backlight)
+
+    # Calculate new brightness
+    if [[ "$1" == "+${step}%" ]]; then
+        new_brightness=$((current_brightness + step))
+    elif [[ "$1" == "${step}%-" ]]; then
+        new_brightness=$((current_brightness - step))
+    fi
+
+    # Ensure new brightness is within valid range
+    if ((new_brightness < 5)); then
+        new_brightness=5
+    elif ((new_brightness > 100)); then
+        new_brightness=100
+    fi
+
+    brightnessctl set "${new_brightness}%"
+    get_icon
+    current=$new_brightness
+    notify_user
+}
+
+# Execute accordingly
+case "$1" in
+"--get")
+    get_backlight
+    ;;
+"--inc")
+    change_backlight "+${step}%"
+    ;;
+"--dec")
+    change_backlight "${step}%-"
+    ;;
+*)
+    get_backlight
+    ;;
+esac
