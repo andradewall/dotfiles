@@ -9,7 +9,7 @@
 
 window#waybar {
     background: transparent;
-    background-color: @crust;
+    /* background-color: @crust; */
     color: @overlay0;
     transition-property: background-color;
     transition-duration: 0.1s;
@@ -34,8 +34,6 @@ button {
 
 button:hover {
     background: inherit;
-    color: @mauve;
-    border-top: 2px solid @mauve;
 }
 
 #workspaces button {
@@ -90,17 +88,17 @@ label.module {
 }
 
 #clock {
-    color: @teal;
+    color: @green;
     /* border-bottom: 2px solid @maroon; */
 }
 
 #clock.date {
-    color: @mauve;
+    color: @green;
     /* border-bottom: 2px solid @mauve; */
 }
 
 #pulseaudio {
-    color: @yellow;
+    color: @blue;
     /* border-bottom: 2px solid @blue; */
 }
 
@@ -111,7 +109,6 @@ label.module {
 
 #idle_inhibitor {
     margin-right: 12px;
-    color: #7cb342;
 }
 
 #idle_inhibitor.activated {
@@ -129,7 +126,7 @@ label.module {
 }
 
 #battery.critical {
-    color: red;
+    color: @red;
     background: transparent;
 }
 
@@ -151,7 +148,7 @@ label.module {
 }
 
 #custom-power {
-    color: @red;
+    color: @overlay0;
 }
 
 #bluetooth {
