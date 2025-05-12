@@ -22,8 +22,8 @@ window#waybar {
 
 #window {
     margin: 8px;
-    padding-left: 8;
-    padding-right: 8;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 button {
@@ -58,13 +58,12 @@ button:hover {
 }
 
 label.module {
-      margin-top: 2px;
-  margin-bottom: 2px;
-  margin-left: 4px;
-  margin-right: 4px;
-  padding-left: 4px;
-  padding-right: 4px;
-
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 4px;
+    margin-right: 4px;
+    padding-left: 4px;
+    padding-right: 4px;
 }
 
 #pulseaudio,
@@ -102,9 +101,12 @@ label.module {
     /* border-bottom: 2px solid @blue; */
 }
 
+#tray {
+    margin: 0 8px;
+}
+
 #network {
     color: @blue;
-    /* border-bottom: 2px solid @yellow; */
 }
 
 #idle_inhibitor {
