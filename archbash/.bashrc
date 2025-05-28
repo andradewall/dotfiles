@@ -58,6 +58,7 @@ alias gst="git status"
 # ###############################################
 export PATH="$PATH:/home/wallace/.local/bin"
 export PATH="$PATH:/opt/nvim"
+export PATH="$PATH:/home/wallace/.config/composer/vendor/bin"
 
 # ###############################################
 # SETTING APPS
@@ -66,6 +67,18 @@ export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --ansi'
 export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git --color=always'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export BAT_THEME="Catppuccin Mocha"
+
+# ###############################################
+# CUSTOM FUNCTIONS
+# ###############################################
+function y() {
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+    yazi "$@" --cwd-file="$tmp"
+    if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        builtin cd -- "$cwd"
+    fi
+    rm -f -- "$tmp"
+}
 
 # ###############################################
 # RUNNING APPS
