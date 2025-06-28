@@ -88,3 +88,8 @@ eval "$(zoxide init bash)"
 eval "$(fzf --bash)"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Automatically start tmux in kitty
+if [ -z "$TMUX" ]; then
+    tmux attach-session -t default || tmux new-session -s default
+fi
