@@ -69,6 +69,18 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export BAT_THEME="Catppuccin Mocha"
 
 # ###############################################
+# CUSTOM FUNCTIONS
+# ###############################################
+function y() {
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+    yazi "$@" --cwd-file="$tmp"
+    if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        builtin cd -- "$cwd"
+    fi
+    rm -f -- "$tmp"
+}
+
+# ###############################################
 # RUNNING APPS
 # ###############################################
 eval "$(starship init bash)"
@@ -76,3 +88,8 @@ eval "$(zoxide init bash)"
 eval "$(fzf --bash)"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Automatically start tmux in kitty
+if [ -z "$TMUX" ]; then
+    tmux attach-session -t default || tmux new-session -s default
+fi
