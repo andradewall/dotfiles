@@ -58,6 +58,7 @@ alias gst="git status"
 # ###############################################
 export PATH="$PATH:/home/wallace/.local/bin"
 export PATH="$PATH:/opt/nvim"
+export PATH="$PATH:/home/wallace/.config/composer/vendor/bin"
 
 # ###############################################
 # SETTING APPS
