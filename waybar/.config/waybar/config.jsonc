@@ -14,6 +14,7 @@
         "temperature",
         "backlight",
         "idle_inhibitor",
+        "custom/keyboard-layout",
         "bluetooth",
         "pulseaudio",
         "network",
@@ -24,7 +25,8 @@
     "clock": {
         "format": "{:%Y-%m-%d %H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "on-click": "bash ~/.config/hypr/scripts/calendar.sh"
+        // "on-click": "bash ~/.config/hypr/scripts/calendar.sh"
+        "on-click": "kitty calcure"
     },
     "battery": {
         "states": {
@@ -172,4 +174,12 @@
         "on-click-right": "swaync-client -d -sw",
         "escape": true
     },
+    "custom/keyboard-layout": {
+        "format": "{text}",
+        "exec": "$HOME/.config/hypr/scripts/get-keyboard.sh",
+        "interval": 1,
+        "return-type": "json",
+        "on-click": "$HOME/.config/hypr/scripts/toggle-keyboard.sh > /dev/null 2>&1",
+        "tooltip": true
+    }
 }
