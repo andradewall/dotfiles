@@ -7,92 +7,85 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-	"icon_theme": "Catppuccin Mocha",
-	"base_keymap": "JetBrains",
-	"vim_mode": true,
-	"ui_font_size": 16,
-	"buffer_font_family": "JetBrainsMono Nerd Font Mono",
-	"buffer_line_height": {
-		"custom": 1.7
-	},
-	"buffer_font_size": 16,
-	"relative_line_numbers": true,
-	"theme": {
-		"mode": "system",
-		"light": "One Light",
-		"dark": "Tokyo Night"
-	},
-	"project_panel": {
-		"dock": "right"
-	},
-	"languages": {
-		"JavaScript": {
-			"formatter": {
-				"language_server": {
-					"name": "biome"
-				}
-			},
-			"code_actions_on_format": {
-				"source.organizeImports.biome": true
-			}
-		},
-		"TypeScript": {
-			"formatter": {
-				"language_server": {
-					"name": "biome"
-				}
-			},
-			"code_actions_on_format": {
-				"source.organizeImports.biome": true
-			}
-		},
-		"JSX": {
-			"formatter": {
-				"language_server": {
-					"name": "biome"
-				}
-			},
-			"code_actions_on_format": {
-				"source.organizeImports.biome": true
-			}
-		},
-		"TSX": {
-			"formatter": {
-				"language_server": {
-					"name": "biome"
-				}
-			},
-			"code_actions_on_format": {
-				"source.organizeImports.biome": true
-			}
-		},
-		"JSON": {
-			"formatter": {
-				"language_server": {
-					"name": "biome"
-				}
-			}
-		},
-		"JSONC": {
-			"formatter": {
-				"language_server": {
-					"name": "biome"
-				}
-			}
-		},
-		"CSS": {
-			"formatter": {
-				"language_server": {
-					"name": "biome"
-				}
-			}
-		},
-		"GraphQL": {
-			"formatter": {
-				"language_server": {
-					"name": "biome"
-				}
-			}
-		}
-	}
+  "icon_theme": "Catppuccin Mocha",
+  "base_keymap": "JetBrains",
+  "vim_mode": true,
+  "ui_font_size": 16,
+  "buffer_font_family": "JetBrainsMono Nerd Font Mono",
+  "buffer_line_height": {
+    "custom": 1.7
+  },
+  "buffer_font_size": 16,
+  "relative_line_numbers": true,
+  "theme": {
+    "mode": "dark",
+    "light": "Tokyo Night Light",
+    "dark": "Tokyo Night"
+  },
+  "project_panel": {
+    "dock": "right"
+  },
+  "lsp": {
+    "biome": {
+      "settings": {
+        "require_config_file": true
+      }
+    }
+  },
+  "languages": {
+    "JavaScript": {
+      "formatter": {
+        "language_server": {
+          "name": "biome"
+        }
+      },
+      "code_actions_on_format": {
+        "source.organizeImports.biome": true
+      }
+    },
+    "TypeScript": {
+      "formatter": {
+        "language_server": {
+          "name": "biome"
+        }
+      },
+      "code_actions_on_format": {
+        "source.organizeImports.biome": true
+      }
+    },
+    "JSX": {
+      "formatter": {
+        "language_server": {
+          "name": "biome"
+        }
+      },
+      "code_actions_on_format": {
+        "source.organizeImports.biome": true
+      }
+    },
+    "TSX": {
+      "formatter": {
+        "language_server": {
+          "name": "biome"
+        }
+      },
+      "code_actions_on_format": {
+        "source.organizeImports.biome": true
+      }
+    },
+    "CSS": {
+      "formatter": {
+        "language_server": {
+          "name": "biome"
+        }
+      }
+    },
+    "GraphQL": {
+      "formatter": {
+        "language_server": {
+          "name": "biome"
+        }
+      }
+    }
+  }
 }
