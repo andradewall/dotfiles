@@ -37,6 +37,8 @@ alias sb="cd ~/second-brain/ && nvim ."
 alias zt="cd ~/second-brain/zettelkasten/ && nvim ."
 alias ed="cd ~/dotfiles/ && nvim ."
 alias lg="lazygit"
+alias dn="docker network ls -q | xargs -n 1 docker network inspect --format '{{.Name}}: {{range .IPAM.Config}}{{.Subnet}}{{end}}'
+"
 
 # Docker
 alias dlsa="docker container ls --all"
@@ -72,12 +74,12 @@ export BAT_THEME="Catppuccin Mocha"
 # CUSTOM FUNCTIONS
 # ###############################################
 function y() {
-    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-    yazi "$@" --cwd-file="$tmp"
-    if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-        builtin cd -- "$cwd"
-    fi
-    rm -f -- "$tmp"
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    builtin cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
 }
 
 # ###############################################
@@ -91,9 +93,9 @@ eval "$(fzf --bash)"
 
 # Automatically start tmux in kitty
 if [ -z "$TMUX" ]; then
-    tmux attach-session -t default || tmux new-session -s default
+  tmux attach-session -t default || tmux new-session -s default
 fi
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
