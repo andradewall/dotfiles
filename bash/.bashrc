@@ -102,3 +102,14 @@ export NVM_DIR="$HOME/.nvm"
 
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 ssh-add -q ~/.ssh/wllc_github_ed25519 ~/.ssh/safe_github_ed25519 2>/dev/null || true
+
+gemini() {
+  # Path to where you cloned the repo (so it can find your .env)
+  local INSTALL_DIR="/home/wallace/docker-containers/gemini"
+
+  docker run -it --rm \
+    --env-file "$INSTALL_DIR/.env" \
+    -v gemini_config:/root/.gemini \
+    -v "$(pwd):/workspace" \
+    gemini-cli "$@"
+}
