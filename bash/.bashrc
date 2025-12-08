@@ -29,7 +29,7 @@ shopt -s checkwinsize
 # ###############################################
 
 # Misc
-alias ll="eza -lAG --icons=auto"
+alias ll="eza -lA --icons=auto"
 alias eb="nvim ~/.bashrc"
 alias rb="source ~/.bashrc"
 alias en="cd ~/.config/nvim/ && nvim ."
