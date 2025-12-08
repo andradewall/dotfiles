@@ -1,0 +1,4 @@
+[custom0]
+binding='<Super>q'
+command='/usr/bin/alacritty'
+name='Open Alacritty'
