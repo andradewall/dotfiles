@@ -44,6 +44,14 @@ style = "bright-black"
 format = "[$duration]($style) "
 style = "yellow"
 
+[docker_context]
+disabled = false
+symbol = "🐳 "
+# Only show the icon, hide the word "default" if you are on the default context
+format = "via [$symbol$context]($style) "
+only_with_files = true
+detect_files = ["docker-compose.yml", "docker-compose.yaml", "compose.yaml", "compose.yml", "compose.dev.yaml", "compose.dev.yml", "Dockerfile"]
+
 # [python]
 # format = "[$virtualenv]($style) "
 # style = "bright-black"
