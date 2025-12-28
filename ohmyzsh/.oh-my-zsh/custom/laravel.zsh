@@ -1,38 +1,45 @@
-artisan() {
+wk() {
     # ---------------------------------------------------------
-    # 1. Flexible File Detection
+    # 1. Smart File Selection (Priority: Dev > Standard)
     # ---------------------------------------------------------
-    # Look for any file matching *compose*.y*ml
-    # (N) = null glob (prevents error if no match)
-    # (.) = only regular files
-    # [1] = takes the first match found
-    local compose_file=( *compose*.y*ml(N.) )
+    
+    # Find ALL match candidates into an array
+    local files=( *compose*.y*ml(N.) )
 
-    if (( ${#compose_file} == 0 )); then
-        echo "❌ Error: No compose file (*compose*.y*ml) found in this folder."
+    if (( ${#files} == 0 )); then
+        echo "❌ Error: No compose file (*compose*.y*ml) found."
         return 1
     fi
 
-    # Pick the first file found (e.g., compose.dev.yaml)
-    local target_file="${compose_file[1]}"
+    local target_file=""
+
+    # Check for a file containing "dev" (e.g., compose.dev.yaml)
+    # ${(M)...} filters the array for matches containing "dev"
+    local dev_candidates=( ${(M)files:#*dev*} )
+
+    if (( ${#dev_candidates} > 0 )); then
+        # Priority A: Use the first "dev" file found
+        target_file="${dev_candidates[1]}"
+    else
+        # Priority B: No dev file? Just take the first file found
+        target_file="${files[1]}"
+    fi
 
     # ---------------------------------------------------------
     # 2. Determine Command Arguments
     # ---------------------------------------------------------
-    # If the file is NOT a standard name, we must force Docker to use it with -f
-    # Standard names: docker-compose.yml, docker-compose.yaml, compose.yml, compose.yaml
     local docker_cmd="docker compose"
     
+    # If filename is non-standard, we MUST use the -f flag
     if [[ ! "$target_file" =~ ^(docker-compose\.ya?ml|compose\.ya?ml)$ ]]; then
-        # It's a custom name (like compose.dev.yaml), so we force the -f flag
         docker_cmd="docker compose -f $target_file"
     fi
 
     # ---------------------------------------------------------
     # 3. Find the PHP Service
     # ---------------------------------------------------------
-    # We use the constructed $docker_cmd to ensure we query the correct file
-    local service=$($docker_cmd ps --services --filter "status=running" | grep -E '^(app|php|laravel\.test|workspace|web)$' | head -n 1)
+    # We use the constructed $docker_cmd to query the specific file
+    local service=$(eval "$docker_cmd ps --services --filter 'status=running'" | grep -E '^(workspace)$' | head -n 1)
 
     if [ -z "$service" ]; then
         echo "❌ Error: Could not detect a running PHP service in '$target_file'."
@@ -42,7 +49,6 @@ artisan() {
     # ---------------------------------------------------------
     # 4. Execute
     # ---------------------------------------------------------
-    echo -e "\e[2m🐳 Using file: $target_file | Container: $service\e[0m"
-    # eval is needed here to properly handle the spaces in docker_cmd
-    eval "$docker_cmd exec -it $service php artisan \"$@\""
+    echo -e "\e[2m🐳 Using file: $target_file | Container: $service | Command: $docker_cmd exec -it $service $@\e[0m"
+    eval "$docker_cmd exec -it $service $@"
 }

@@ -41,3 +41,12 @@ zle_highlight+=(paste:none)
 
 # Typos: Autocorrect commands (e.g., 'doker' -> 'docker')
 setopt CORRECT
+
+# Use a selection menu instead of just listing files
+zstyle ':completion:*' menu select
+
+# Colorize completions (matches your 'ls' colors)
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
+# Case insensitive completion (cd public matches Public, PUBLIC, etc.)
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
